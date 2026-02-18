@@ -1,68 +1,68 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
+@layer base {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    /* Content Garden palette - RGB for Tailwind opacity */
+    --background: 24 24 27; /* #18181B */
+    --foreground: 255 255 255;
+    --card: 38 38 44; /* #26262C */
+    --card-foreground: 237 237 237;
+    --muted: 41 41 50; /* #292932 */
+    --muted-foreground: 161 161 170;
+    --border: 54 54 60; /* #36363C */
+    --input: 54 54 60;
+    --ring: 57 255 144; /* electric green focus */
+    --primary: 57 255 144; /* #39FF90 */
+    --primary-foreground: 0 0 0;
+    --secondary: 41 41 50;
+    --secondary-foreground: 237 237 237;
+    --accent-green: 57 255 144;
+    --accent-orange: 255 127 63;
+    --accent-purple: 162 89 255;
+    --accent-yellow: 247 224 110;
+    --accent-red: 255 87 87;
+    --radius: 0.625rem; /* 10px */
   }
-  a:hover {
-    color: #747bff;
+
+  * {
+    @apply border-border;
   }
-  button {
-    background-color: #f9f9f9;
+
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans text-base leading-relaxed;
+    font-family: 'Inter', system-ui, sans-serif;
+    letter-spacing: 0.01em;
+  }
+
+  /* Focus visible for accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent-green;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .card-interactive {
+    @apply transition-all duration-300 ease-out;
+  }
+  .card-interactive:hover {
+    @apply shadow-card-hover border-workspace-outline;
   }
 }
