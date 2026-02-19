@@ -3,6 +3,7 @@ import { DashboardLayout } from '@/components/layout/dashboard-layout'
 import { LandingPage } from '@/pages/landing'
 import { LoginPage } from '@/pages/auth/login'
 import { SignupPage } from '@/pages/auth/signup'
+import { ForgotPasswordPage } from '@/pages/auth/forgot-password'
 import { HomePage } from '@/pages/home'
 import { GardenPage } from '@/pages/garden'
 import { CanvasesPage } from '@/pages/canvases'
@@ -18,6 +19,7 @@ import { AdminDashboardPage } from '@/pages/admin'
 import { PrivacyPage } from '@/pages/legal/privacy'
 import { TermsPage } from '@/pages/legal/terms'
 import { HelpPage } from '@/pages/legal/help'
+import { CookiePolicyPage } from '@/pages/legal/cookie-policy'
 import { NotFoundPage } from '@/pages/legal/not-found'
 import { ErrorPage } from '@/pages/legal/error'
 
@@ -25,6 +27,7 @@ export const router = createBrowserRouter([
   { path: '/landing', element: <LandingPage /> },
   { path: '/login', element: <LoginPage /> },
   { path: '/signup', element: <SignupPage /> },
+  { path: '/forgot-password', element: <ForgotPasswordPage /> },
   {
     path: '/',
     element: <DashboardLayout />,
@@ -44,6 +47,7 @@ export const router = createBrowserRouter([
       { path: 'privacy', element: <PrivacyPage /> },
       { path: 'terms', element: <TermsPage /> },
       { path: 'help', element: <HelpPage /> },
+      { path: 'cookies', element: <CookiePolicyPage /> },
     ],
   },
   { path: '/404', element: <NotFoundPage /> },

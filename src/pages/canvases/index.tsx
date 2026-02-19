@@ -13,10 +13,15 @@ export function CanvasesPage() {
     <div className="space-y-6 animate-fade-in">
       <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
         <h1 className="text-title font-bold text-foreground">Canvases</h1>
-        <Button className="gap-2">
-          <Plus className="h-4 w-4" />
-          New Canvas
-        </Button>
+        <div className="flex gap-2">
+          <Button variant="outline" size="sm">
+            From template
+          </Button>
+          <Button className="gap-2">
+            <Plus className="h-4 w-4" />
+            New Canvas
+          </Button>
+        </div>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

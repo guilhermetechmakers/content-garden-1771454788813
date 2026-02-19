@@ -2,11 +2,12 @@ import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { Sprout } from 'lucide-react'
+import { Sprout, Mail } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Separator } from '@/components/ui/separator'
 
 const signupSchema = z.object({
   email: z.string().email('Invalid email'),
@@ -41,7 +42,7 @@ export function SignupPage() {
       <Card className="w-full max-w-md border-workspace-outline bg-workspace-card">
         <CardHeader className="text-center">
           <CardTitle className="text-title">Create account</CardTitle>
-          <CardDescription>Sign up with email or use a magic link.</CardDescription>
+          <CardDescription>Sign up with email, magic link, or social.</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -80,6 +81,23 @@ export function SignupPage() {
             <Button type="submit" className="w-full" disabled={isSubmitting}>
               {isSubmitting ? 'Creating account…' : 'Sign up'}
             </Button>
+            <Separator className="my-4 bg-border" />
+            <Button type="button" variant="secondary" className="w-full" disabled>
+              <Mail className="h-4 w-4" />
+              Send magic link
+            </Button>
+            <p className="text-xs text-center text-muted-foreground">or sign up with</p>
+            <div className="flex gap-2">
+              <Button type="button" variant="outline" className="flex-1" disabled>
+                Google
+              </Button>
+              <Button type="button" variant="outline" className="flex-1" disabled>
+                Apple
+              </Button>
+              <Button type="button" variant="outline" className="flex-1" disabled>
+                LinkedIn
+              </Button>
+            </div>
           </form>
           <p className="mt-4 text-center text-sm text-muted-foreground">
             Already have an account?{' '}

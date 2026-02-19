@@ -1,4 +1,4 @@
-import { Calendar, Check, Circle, GripVertical } from 'lucide-react'
+import { Calendar, Check, Circle, GripVertical, Undo2, Send } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
@@ -14,7 +14,20 @@ export function RunwayPage() {
     <div className="space-y-6 animate-fade-in">
       <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
         <h1 className="text-title font-bold text-foreground">Runway</h1>
-        <p className="text-sm text-muted-foreground">Next 7 posts • Drag from Drops or Library</p>
+        <div className="flex items-center gap-2 flex-wrap">
+          <p className="text-sm text-muted-foreground">Next 7 posts • Drag from Drops or Library</p>
+          <Button variant="outline" size="sm" className="gap-1">
+            <Undo2 className="h-4 w-4" />
+            Undo
+          </Button>
+          <Button variant="outline" size="sm" className="gap-1">
+            History
+          </Button>
+          <Button variant="secondary" size="sm" className="gap-1">
+            <Send className="h-4 w-4" />
+            Quick post
+          </Button>
+        </div>
       </div>
 
       <div className="flex gap-6">

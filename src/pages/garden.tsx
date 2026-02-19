@@ -102,7 +102,9 @@ export function GardenPage() {
         open={mergeOpen}
         onOpenChange={setMergeOpen}
         seeds={mockSeedsForMerge(Array.from(selected))}
-        onConfirm={() => {}}
+        onConfirm={(_payload) => {
+          setSelected(new Set())
+        }}
       />
 
       <div className="space-y-8">

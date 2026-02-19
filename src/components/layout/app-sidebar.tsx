@@ -48,6 +48,7 @@ export function AppSidebar() {
           <NavLink
             key={to}
             to={to}
+            title={collapsed ? label : undefined}
             className={({ isActive }) =>
               cn(
                 'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors duration-200',
@@ -65,6 +66,7 @@ export function AppSidebar() {
       <div className="border-t border-workspace-outline p-2">
         <NavLink
           to="/profile"
+          title={collapsed ? 'Profile' : undefined}
           className={({ isActive }) =>
             cn(
               'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors duration-200',

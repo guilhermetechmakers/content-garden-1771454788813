@@ -1,7 +1,36 @@
 import { Link } from 'react-router-dom'
-import { Sprout, Zap, Layout, Package, ArrowRight } from 'lucide-react'
+import { Sprout, Zap, Layout, Package, ArrowRight, Check, Star } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
+
+const pricingPlans = [
+  {
+    name: 'Starter',
+    price: 'Free',
+    desc: 'Capture & curate up to 50 Seeds, 3 Canvases.',
+    features: ['Quick capture', 'Garden triage', '1 Canvas', 'Community support'],
+  },
+  {
+    name: 'Creator',
+    price: '$19/mo',
+    desc: 'Unlimited Seeds, Canvases, Drops & Runway.',
+    features: ['Everything in Starter', 'Unlimited Canvases', 'AI tools', 'Drops & Runway', 'Email support'],
+    featured: true,
+  },
+  {
+    name: 'Team',
+    price: 'Custom',
+    desc: 'Collaboration, shared Canvases, admin.',
+    features: ['Everything in Creator', 'Shared Canvases', 'Admin dashboard', 'Priority support'],
+  },
+]
+
+const testimonials = [
+  { quote: 'Finally a system that matches how I think. Capture in 30 seconds, ship weekly.', author: 'Alex C.', role: 'Content creator' },
+  { quote: 'The Garden triage and AI on Canvas cut my content prep in half.', author: 'Jordan M.', role: 'Founder' },
+  { quote: 'Runway slots keep me consistent. No more “I’ll post later.”', author: 'Sam L.', role: 'Creator' },
+]
 
 export function LandingPage() {
   return (
@@ -85,6 +114,75 @@ export function LandingPage() {
           </div>
         </section>
 
+        {/* Pricing */}
+        <section className="px-6 py-24 border-t border-workspace-outline">
+          <div className="mx-auto max-w-5xl">
+            <h2 className="text-title font-bold text-center mb-4">Pricing</h2>
+            <p className="text-muted-foreground text-center mb-12 max-w-xl mx-auto">
+              Start free. Upgrade when you need more Canvases and AI.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {pricingPlans.map((plan) => (
+                <Card
+                  key={plan.name}
+                  className={cn(
+                    'rounded-card-lg border-workspace-outline bg-workspace-card',
+                    plan.featured && 'border-accent-green/50 shadow-glow'
+                  )}
+                >
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-lg">{plan.name}</CardTitle>
+                    <p className="text-2xl font-bold text-foreground">{plan.price}</p>
+                    <p className="text-sm text-muted-foreground">{plan.desc}</p>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <ul className="space-y-2">
+                      {plan.features.map((f) => (
+                        <li key={f} className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <Check className="h-4 w-4 text-accent-green shrink-0" />
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
+                    <Link to="/signup">
+                      <Button
+                        variant={plan.featured ? 'default' : 'secondary'}
+                        className="w-full mt-4"
+                      >
+                        Get started
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials */}
+        <section className="px-6 py-24 border-t border-workspace-outline bg-workspace-panel/50">
+          <div className="mx-auto max-w-4xl">
+            <h2 className="text-title font-bold text-center mb-4">What creators say</h2>
+            <p className="text-muted-foreground text-center mb-12">Ritual flow, less friction.</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {testimonials.map((t) => (
+                <Card key={t.author} className="rounded-card-lg border-workspace-outline bg-workspace-card">
+                  <CardContent className="pt-6">
+                    <div className="flex gap-1 mb-3">
+                      {[1, 2, 3, 4, 5].map((i) => (
+                        <Star key={i} className="h-4 w-4 fill-accent-yellow text-accent-yellow" />
+                      ))}
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-4">&ldquo;{t.quote}&rdquo;</p>
+                    <p className="font-medium text-foreground">{t.author}</p>
+                    <p className="text-xs text-muted-foreground">{t.role}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* CTA */}
         <section className="px-6 py-24 border-t border-workspace-outline">
           <div className="mx-auto max-w-2xl text-center">
@@ -104,6 +202,7 @@ export function LandingPage() {
             <Link to="/help" className="text-sm text-muted-foreground hover:text-foreground">Help</Link>
             <Link to="/privacy" className="text-sm text-muted-foreground hover:text-foreground">Privacy</Link>
             <Link to="/terms" className="text-sm text-muted-foreground hover:text-foreground">Terms</Link>
+            <Link to="/cookies" className="text-sm text-muted-foreground hover:text-foreground">Cookies</Link>
           </div>
         </div>
       </footer>

@@ -15,13 +15,19 @@ export function DropEditorPage() {
           <ArrowLeft className="h-4 w-4" />
           Back to Drops
         </Link>
-        <Button className="gap-2">
-          <Upload className="h-4 w-4" />
-          Export to Runway
-        </Button>
+        <div className="flex gap-2">
+          <Button variant="outline" size="sm">
+            CSV / JSON
+          </Button>
+          <Button className="gap-2">
+            <Upload className="h-4 w-4" />
+            Export to Runway
+          </Button>
+        </div>
       </div>
 
       <h1 className="text-title font-bold">Drop {dropId ?? '—'}</h1>
+      <p className="text-sm text-muted-foreground">Edit post cards: Hook → Value → Example → CTA. Add variants and assets.</p>
 
       <div className="grid gap-6 lg:grid-cols-3">
         <div className="lg:col-span-2 space-y-6">

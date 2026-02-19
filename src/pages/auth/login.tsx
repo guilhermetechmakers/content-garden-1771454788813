@@ -2,11 +2,12 @@ import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { Sprout } from 'lucide-react'
+import { Sprout, Mail } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Separator } from '@/components/ui/separator'
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email'),
@@ -71,13 +72,32 @@ export function LoginPage() {
               )}
             </div>
             <div className="flex justify-end">
-              <Link to="/login/forgot" className="text-sm text-accent-green hover:underline">
+              <Link to="/forgot-password" className="text-sm text-accent-green hover:underline">
                 Forgot password?
               </Link>
             </div>
             <Button type="submit" className="w-full" disabled={isSubmitting}>
               {isSubmitting ? 'Signing in…' : 'Sign in'}
             </Button>
+            <Separator className="my-4 bg-border" />
+            <div className="space-y-2">
+              <Button type="button" variant="secondary" className="w-full" disabled>
+                <Mail className="h-4 w-4" />
+                Send magic link
+              </Button>
+              <p className="text-xs text-center text-muted-foreground">or continue with</p>
+              <div className="flex gap-2">
+                <Button type="button" variant="outline" className="flex-1" disabled>
+                  Google
+                </Button>
+                <Button type="button" variant="outline" className="flex-1" disabled>
+                  Apple
+                </Button>
+                <Button type="button" variant="outline" className="flex-1" disabled>
+                  LinkedIn
+                </Button>
+              </div>
+            </div>
           </form>
           <p className="mt-4 text-center text-sm text-muted-foreground">
             Don&apos;t have an account?{' '}

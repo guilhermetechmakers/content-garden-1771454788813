@@ -17,13 +17,27 @@ export function HomePage() {
       <section>
         <h2 className="text-section font-semibold text-foreground mb-4">Quick Capture</h2>
         <div className="flex flex-col sm:flex-row gap-4">
-          <div className="flex-1 relative">
+          <div className="flex-1 flex items-center gap-2 rounded-xl border border-workspace-outline bg-workspace-card overflow-hidden focus-within:ring-2 focus-within:ring-accent-green/50 focus-within:border-accent-green/50 transition-all">
             <Input
               placeholder="Paste a link, type a thought, or describe what you're capturing…"
-              className="h-12 pl-4 pr-4 rounded-xl border-workspace-outline bg-workspace-card focus:ring-accent-green/50"
+              className="h-12 flex-1 border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 rounded-none pl-4"
             />
+            <div className="flex items-center gap-1 pr-2 shrink-0">
+              {quickActions.map(({ label, icon: Icon }) => (
+                <Button
+                  key={label}
+                  variant="ghost"
+                  size="icon"
+                  className="h-9 w-9 rounded-lg"
+                  title={label}
+                  aria-label={label}
+                >
+                  <Icon className="h-4 w-4" />
+                </Button>
+              ))}
+            </div>
           </div>
-          <div className="flex flex-wrap gap-2 sm:gap-3">
+          <div className="flex flex-wrap gap-2 sm:gap-3 sm:items-center">
             {quickActions.map(({ label, icon: Icon }) => (
               <Button key={label} variant="secondary" size="default" className="gap-2">
                 <Icon className="h-4 w-4" />

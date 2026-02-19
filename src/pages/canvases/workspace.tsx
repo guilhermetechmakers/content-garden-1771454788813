@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
-import { Search, Sparkles, History, Upload } from 'lucide-react'
+import { Search, Sparkles, History, Upload, LayoutTemplate } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
@@ -13,6 +13,10 @@ export function CanvasWorkspacePage() {
           ← Back to Canvases
         </Link>
         <div className="flex gap-2">
+          <Button variant="outline" size="sm" className="gap-1">
+            <LayoutTemplate className="h-4 w-4" />
+            Templates
+          </Button>
           <Button variant="outline" size="sm" className="gap-1">
             <History className="h-4 w-4" />
             Version history
